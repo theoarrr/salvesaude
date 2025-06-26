@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salve Saúde - Wireframes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1976d2;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+        }
+
+        .wireframe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .phone-frame {
+            background: #fff;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            border: 3px solid #e0e0e0;
+            position: relative;
+            aspect-ratio: 9/16;
+        }
+
+        .phone-frame::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: #bdbdbd;
+            border-radius: 2px;
+        }
+
+        .screen {
+            background: #fafafa;
+            border-radius: 12px;
+            height: 100%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #e0e0e0;
+        }
+
+        .screen-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #1976d2;
+            margin-bottom: 20px;
+            text-align: center;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e3f2fd;
+        }
+
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            font-size: 0.8rem;
+            color: #666;
+            border-bottom: 1px solid #e0e0e0;
+            margin-bottom: 15px;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding: 10px 0;
+        }
+
+        .header h2 {
+            color: #333;
+            font-size: 1.3rem;
+        }
+
+        .icon-placeholder {
+            width: 24px;
+            height: 24px;
+            background: #90caf9;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border: 1px solid #e0e0e0;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .card-title {
+            font-weight: 500;
+            color: #333;
+            margin-left: 10px;
+        }
+
+        .metric-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+        }
+
+        .metric-value {
+            font-weight: 600;
+            color: #2e7d32;
+        }
+
+        .alert-card {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+        }
+
+        .button {
+            background: #1976d2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 24px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin: 8px 0;
+            width: 100%;
+        }
+
+        .button-secondary {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+
+        .emergency-button {
+            background: #d32f2f;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            border: none;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 16px rgba(211, 47, 47, 0.4);
+        }
+
+        .bottom-nav {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #fff;
+            border-top: 1px solid #e0e0e0;
+            padding: 12px;
+            display: flex;
+            justify-content: space-around;
+            border-radius: 0 0 12px 12px;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 8px;
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+        .nav-item.active {
+            color: #1976d2;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            font-size: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .medication-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+
+        .time-slot {
+            display: inline-block;
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-right: 8px;
+        }
+
+        .chart-placeholder {
+            height: 120px;
+            background: linear-gradient(45deg, #e3f2fd 25%, #f3e5f5 25%, #f3e5f5 50%, #e3f2fd 50%, #e3f2fd 75%, #f3e5f5 75%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-style: italic;
+        }
+
+        .floating-elements {
+            position: relative;
+        }
+
+        .scroll-content {
+            flex: 1;
+            overflow-y: auto;
+            padding-bottom: 80px;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #333;
+            margin: 20px 0 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏥 Salve Saúde - Sistema de Wireframes</h1>
+        
+        <div class="wireframe-grid">
+            <!-- Tela 1: Login -->
+            <div class="phone-frame">
+                <div class="screen">
+                    <div class="screen-title">Login</div>
+                    <div class="status-bar">
+                        <span>9:41</span>
+                        <span>●●●●● 4G</span>
+                    </div>
+                    
+                    <div style="text-align: center; margin: 40px 0;">
+                        <div style="width: 80px; height: 80px; background: #1976d2; border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">🏥</div>
+                        <h2 style="color: #1976d2; margin-bottom: 8px;">Salve Saúde</h2>
+                        <p style="color: #666; font-size: 0.9rem;">Seu acompanhamento digital</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">E-mail</label>
+                        <input type="email" class="input-field" placeholder="seu@email.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Senha</label>
+                        <input type="password" class="input-field" placeholder="••••••••">
+                    </div>
+                    
+                    <button class="button">Entrar</button>
+                    <button class="button button-secondary">Criar Conta</button>
+                    
+                    <div style="text-align: center; margin-top: 20px;">
+                        <a href="#" style="color: #1976d2; text-decoration: none; font-size: 0.9rem;">Esqueci minha senha</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tela 2: Dashboard Principal -->
+            <div class="phone-frame">
+                <div class="screen">
+                    <div class="screen-title">Dashboard</div>
+                    <div class="status-bar">
+                        <span>9:41</span>
+                        <span>●●●●● 4G</span>
+                    </div>
+                    
+                    <div class="header">
+                        <div>
+                            <h2>Olá, Maria!</h2>
+                            <p style="color: #666; font-size: 0.9rem;">Como está se sentindo hoje?</p>
+                        </div>
+                        <div class="icon-placeholder"></div>
+                    </div>
+                    
+                    <div class="scroll-content">
+                        <div class="alert-card card">
+                            <div class="card-header">
+                                <div class="icon-placeholder"></div>
+                                <span class="card-title">⚠️ Lembrete</span>
+                            </div>
+                            <p>Hora do medicamento: Losartana 50mg</p>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="icon-placeholder"></div>
+                                <span class="card-title">📊 Últimas Medições</span>
+                            </div>
+                            <div class="metric-row">
+                                <span>Pressão Arterial</span>
+                                <span class="metric-value">120/80 mmHg</span>
+                            </div>
+                            <div class="metric-row">
+                                <span>Glicemia</span>
+                                <span class="metric-value">95 mg/dL</span>
+                            </div>
+                            <div class="metric-row">
+                                <span>Oxigenação</span>
+                                <span class="metric-value">98%</span>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="icon-placeholder"></div>
+                                <span class="card-title">📈 Progresso Semanal</span>
+                            </div>
+                            <div class="chart-placeholder">
+                                Gráfico de Tendências
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bottom-nav">
+                        <div class="nav-item active">
+                            <div class="icon-placeholder"></div>
+                            <span>Início</span>
+                        </div>
+                        <div class="nav-item">
+                            <div class="icon-placeholder"></div>
+                            <span>Medir</span>
+                        </div>
+                        <div class="nav-item">
+                            <div class="icon-placeholder"></div>
+                            <span>Remédios</span>
+                        </div>
+                        <div class="nav-item">
+                            <div class="icon-placeholder"></div>
+                            <span>Consultas</span>
+                        </div>
+                        <div class="nav-item">
+                            <div class="icon-placeholder"></div>
+                            <span>Perfil</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tela 3: Monitoramento -->
+            <div class="phone-frame">
+                <div class="screen">
+                    <div class="screen-title">Monitoramento</div>
+                    <div class="status-bar">
+                        <span>9:41</span>
+                        <span>●●●●● 4G</span>
+                    </div>
+                    
+                    <div class="header">
+                        <h2>Medições</h2>
+                        <div class="icon-placeholder"></div>
+                    </div>
+                    
+                    <div class="scroll-content">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="icon-placeholder"></div>
+                                <span class="card-title">🩺 Pressão Arterial</span>
+                            </div>
+                            <div class="form-group">
+                                <div style="display: flex; gap: 10px;">
+                                    <input type="number" class="input-field" placeholder="Sistólica" style="flex: 1;">
+                                    <input type="number" class="input-field" placeholder="Diastólica" style="flex: 1;">
+                                </div>
+                            </div>
+                            <button class="button">Registrar Medição</button>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="icon-placeholder"></div>
+                                <span class="card-title">🩸 Glicemia</span>
+                            </div>
+                            <div class="form-group">
+                                <input type="number" class="input-field" placeholder="mg/dL">
+                                <select class="input-field">
+                                    <option>Jejum</option>
+                                    <option>Pós-refeição</option>
+                                    <option>Aleatória</option>
+                                </select>
+                            </div>
+                            <button class="button">Registrar Medição</button>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="icon-placeholder"></div>
+                                <span class="card-title">🫁 Oxigenação</span>
+                            </div>
+                            <div class="form-group">
+                                <input type="number" class="input-field" placeholder="% SpO2">
+                            </div>
+                            <button class="button">Registrar Medição</button>
+                        </div>
+                    </div>
+                    
+                    <div class="bottom-nav">
+                        <div class="nav-item">
+                            <div class="icon-placeholder"></div>
+                            <span>Início</span>
+                        </div>
+                        <div class="nav-item active">
+                            <div class="icon-placeholder"></div>
+                            <span>Medir</span>
+                        </div>
+                        <div class="nav-item">
+                            <div class="icon-placeholder"></div>
+                            <span>Remédios</span>
+                        </div>
+                        <div class="nav-item">
+                            <div class="icon-placeholder"></div>
+                            <span>Consultas</span>
+                        </div>
+                        <div class="nav-item">
+                            <div class="icon-placeholder"></div>
+                            <span>Perfil</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tela 4: Medicamentos -->
+            <div class="phone-frame">
+                <div class="screen">
+                    <div class="screen-title">Medicamentos</div>
+                    <div class="status-bar">
+                        <span>9:41</span>
+                        <span>●●●●● 4G</span>
+                    </div>
+                    
+                    <div class="header">
+                        <h2>Meus Remédios</h2>
+                        <button style="background: #1976d2; color: white; border: none; border-radius: 50%; width: 32px; height: 32px;">+</button>
+                    </div>
+                    
+                    <div class="scroll-content">
+                        <div class="section-title">📅 Hoje</div>
+                        
+                        <div class="medication-item">
+                            <div>
+                                <strong>Losartana 50mg</strong>
+                                <div style="color: #666; font-size: 0.9rem;">1 comprimido</div>
+                                <div>
+                                    <span class="time-slot">08:00</span>
+                                    <span class="time-slot">20:00</span>
+                                </div>
+                            </div>
+                            <input type="checkbox" style="width: 20px; height: 20px;">
+                        </div>
+
+                        <div class="medication-item">
+                            <div>
+                                <strong>Metformina 850mg</strong>
+                                <div style="color: #666; font-size: 0.9rem;">1 comprimido</div>
+                                <div>
+                                    <span class="time-slot">12:00</span>
+                                    <span class="time-slot">19:00</span>
+                                </div>
+                            </div>
+                            <input type="checkbox" style="width: 20px; height: 20px;" checked>
+                        </div>
+
+                        <div class="medication-item">
+                            <div>
+                                <strong>Sinvastatina 20mg</strong>
+                                <div style="color: #666; font-size: 0.9rem;">1 comprimido</div>
+                                <div>
+                                    <span class="time-slot">22:00</span>
+                                </div>
+                            </div>
+                            <input type="checkbox" style="width: 20px; height: 20px;">
+                        </div>
+
+                        <div class="section-title">📊 Estatísticas</div>
+                        
+                        <div class="card">
+                            <div class="metric-row">
+                                <span>Adesão esta semana</span>
+                                <span class="metric-value">87%</span>
+                            </div>
+                            <div class="metric-row">
+                                <span>Doses tomadas</span>
+                                <span class="metric-value">26/30</span>
+                            </div>
+                            <div class="metric-row">
+                                <span>Próximo lembrete</span>
+                                <span
